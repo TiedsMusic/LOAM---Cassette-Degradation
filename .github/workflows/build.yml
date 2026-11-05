@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake -B build
+      - run: cmake --build build --config Release --parallel
+      - name: Lister les plugins compilés
+        run: Get-ChildItem -Path build -Recurse -Filter *.vst3 | Select-Object FullName
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Plugin-VST3-Windows
+          path: build/*_artefacts/Release/VST3/
+          if-no-files-found: error
