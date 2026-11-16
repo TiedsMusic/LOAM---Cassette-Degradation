@@ -22,6 +22,19 @@ juce_add_plugin(Loam
     NEEDS_MIDI_OUTPUT FALSE
     COPY_PLUGIN_AFTER_BUILD FALSE)
 
+# Images du design (fond, potards) et police manuscrite, intégrées dans le plugin
+juce_add_binary_data(LoamAssets SOURCES
+    Assets/background.jpg
+    Assets/knob1.png
+    Assets/knob2.png
+    Assets/knob3.png
+    Assets/knob4.png
+    Assets/knob5.png
+    Assets/knob6.png
+    Assets/knob7.png
+    Assets/knob8.png
+    Assets/MarkerHand.ttf)
+
 target_sources(Loam PRIVATE
     Source/PluginProcessor.h
     Source/PluginProcessor.cpp
@@ -37,6 +50,7 @@ target_compile_definitions(Loam PUBLIC
 
 target_link_libraries(Loam
     PRIVATE
+        LoamAssets
         juce::juce_audio_utils
         juce::juce_dsp
     PUBLIC
