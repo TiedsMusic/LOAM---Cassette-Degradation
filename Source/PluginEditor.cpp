@@ -100,7 +100,7 @@ void LoamLookAndFeel::drawRotarySlider (juce::Graphics& g, int x, int y, int w, 
                            .translated (-d * 0.5f, -d * 0.5f)
                            .rotated (angle)
                            .translated (cx, cy);
-        g.setImageResampling (juce::Graphics::highResamplingQuality);
+        g.setImageResamplingQuality (juce::Graphics::highResamplingQuality);
         g.drawImageTransformed (img, t, false);
     }
 }
@@ -304,7 +304,7 @@ void LoamEditor::paint (juce::Graphics& g)
 {
     const float s = (float) getWidth() / kRefW;
 
-    g.setImageResampling (juce::Graphics::highResamplingQuality);
+    g.setImageResamplingQuality (juce::Graphics::highResamplingQuality);
     g.drawImage (background, getLocalBounds().toFloat(), juce::RectanglePlacement::stretchToFit);
 
     // noms sur les rubans, valeurs dans les petits cadres
